@@ -24,7 +24,7 @@ jobs:
         run: pip install requests
 
       - name: Run scraper
-        run: python scraper.py
+        run: python guardian_scrape.py
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
