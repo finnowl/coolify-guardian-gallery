@@ -1,0 +1,33 @@
+name: Hourly Photo Scraper
+
+on:
+  schedule:
+    # Körs varje timme (minut 0)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Gör det möjligt att även starta skriptet manuellt via GitHub
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "auto: uppdaterat bildgalleri"
+          file_pattern: latest_guardian_photos.json
