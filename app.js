@@ -1,5 +1,5 @@
 (function() {
-    var JSON_URL = 'latest_guardian_photos.json'; // Will be in the same folder
+    var JSON_URL = 'https://raw.githubusercontent.com/finnowl/coolify-guardian-gallery/main/latest_guardian_photos.json'; // Repo set to public
     var REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
     var SLIDE_DURATION_MS = 30000; // 30 seconds
     
